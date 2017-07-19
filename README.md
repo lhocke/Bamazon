@@ -1,0 +1,2 @@
+# Bamazon
+A CLI store
