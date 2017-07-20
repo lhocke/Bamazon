@@ -1,7 +1,12 @@
 
 var mysql = require('mysql');
 var inquirer = require('inquirer');
-var consoleTable = require('console.table');
+var Table = require('cli-table');
+
+var table = new Table({
+    head: ['ID', 'Item', 'Department', 'Price', 'In Stock']
+  , colWidths: [4, 20, 20, 20, 20]
+});
 
 var connection = mysql.createConnection({
 	host: "localhost",
@@ -25,12 +30,11 @@ var bamazonStart = function(){
         inventory = []
         for (var i = 0; i < res.length; i++) {
             // console.log("\nResult" + res[i].id);
-            inventory.push({id: res[i].id, item: res[i].product_name, department: res[i].department_name, price: res[i].price, stock: res[i].stock_quantity});
+            table.push([res[i].id, res[i].product_name, res[i].department_name, '$' + res[i].price, res[i].stock_quantity]);
         };
-        console.log(inventory)
-        console.table(['id','item','department','price','stock'], inventory);
-        console.log(consoleTable)
-        console.log("running")
+        // console.log(inventory)
+    // table.push(inventory)
+    console.log(table.toString());
     connection.end()
     })
 };
