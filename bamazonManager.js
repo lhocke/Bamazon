@@ -40,7 +40,8 @@ var shopManage = function(item, table) {
     ]).then(function(choice){
         switch(choice.job){
             case "View Items":
-                console.log("\033c", table.toString());
+                console.log("\033c");
+                console.log(table.toString());
                 whatNext();
             break;
             case "See Low Inventory":
@@ -50,6 +51,8 @@ var shopManage = function(item, table) {
                 update(item,table);
             break;
             case "Add An Item":
+                console.log("\033c");
+                console.log(table.toString());
                 itemAdd(table);
             break;
         }
@@ -113,7 +116,6 @@ var update = function(a,table) {
 }
 
 var itemAdd = function(table) {
-    console.log("\033c", table.toString())
     inquirer.prompt([
         {
             name: "name",
