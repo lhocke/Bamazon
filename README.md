@@ -16,4 +16,4 @@ To run the manager app, open bamazonManager.js in node. You will be asked to cho
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=AmBy0yFeMks/0.jpg
 " target="_blank"><img src="http://img.youtube.com/vi/AmBy0yFeMks/0.jpg/0.jpg" 
-alt="Bamazon Customer Walkthrough" width="240" height="180" border="10" /></a>
+alt="Bamazon Manager Walkthrough" width="240" height="180" border="10" /></a>
