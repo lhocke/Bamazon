@@ -44,8 +44,8 @@ var letsShop = function(items) {
             message: "Which item number would you like to purchase?",
             type: "input",
             validate: function(input){
-                purchase.replace(/\D/g, "");
-                if (!input || parseInt(input) > items.length) {
+                var check = input.replace(/\D/g, "");
+                if (!input || parseInt(input) > items.length || check === "") {
                     return false
                 } else {
                     return true
@@ -57,8 +57,8 @@ var letsShop = function(items) {
             message: "How many would you like to purchase?",
             type: "input",
             validate: function(input){
-                quantity.replace(/\D/g, "");
-                if (!input) {
+                var check = input.replace(/\D/g, "");
+                if (!input || check === "") {
                     return false
                 } else {
                     return true
