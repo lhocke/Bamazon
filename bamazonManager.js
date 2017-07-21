@@ -103,7 +103,7 @@ var update = function(a) {
             message: "Which product # would you like to update?",
             type: "input",
             validate: function() {
-                product.replace(/\D/g, "")
+                product.replace(/\D/g, "");
                 if (!product || parseInt(product) > a.length || product < 1) {
                     return false
                 } else {
@@ -125,6 +125,13 @@ var update = function(a) {
             }
         }
     ]).then(function(action) {
-
+        var itemIndex = action.product - 1;
+        connection.query("UPDATE products SET stock_quantity = ? WHERE id= ?", [a[itemIndex].stock_quantity], a[itemIndex].id)], function(err) {
+            if (err) throw err;
+        }
     })
+}
+
+var itemAdd = function(b) {
+    console.log("itemAdd")
 }
