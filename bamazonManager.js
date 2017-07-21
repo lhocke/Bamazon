@@ -34,26 +34,30 @@ var shopManage = function(item, table) {
            name: "job",
            message: "What would you like to do?",
            type: "list",
-           choices: ["View Items", "See Low Inventory", "Update Stock", "Add An Item"] 
+           choices: ["1. View Items", "2. See Low Inventory", "3. Update Stock", "4. Add An Item", "5. Exit"] 
         }
 
     ]).then(function(choice){
         switch(choice.job){
-            case "View Items":
+            case "1. View Items":
                 console.log("\033c");
                 console.log(table.toString());
                 whatNext();
             break;
-            case "See Low Inventory":
+            case "2. See Low Inventory":
                 lowCheck(item);
             break;
-            case "Update Stock":
+            case "3. Update Stock":
                 update(item,table);
             break;
-            case "Add An Item":
+            case "4. Add An Item":
                 console.log("\033c");
                 console.log(table.toString());
                 itemAdd(table);
+            break;
+            case "5. Exit":
+                console.log("\033c")
+                process.exit()
             break;
         }
     })
@@ -174,7 +178,7 @@ var itemAdd = function(table) {
         connection.query("INSERT INTO products SET ?", newItem, function(err){
             if (err) throw err;
         })
-        console.log(table.toString(), "Item Added")
+        console.log("Item Added")
         inquirer.prompt([
             {
                 name: "again",
@@ -200,14 +204,15 @@ var whatNext = function() {
             name: "action",
             message: "What would you like to do?",
             type: "list",
-            choices: ["Main Menu", "Exit"]
+            choices: ["1. Main Menu", "2. Exit"]
         }
     ]).then(function(req){
         switch(req.action){
-            case "Main Menu":
+            case "1. Main Menu":
                 bamazonStart()
             break;
-            case "Exit":
+            case "2. Exit":
+                console.log("\033c")
                 process.exit()
             break;
         }
